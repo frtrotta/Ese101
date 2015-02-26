@@ -6,9 +6,9 @@ public class QuadraticEquationSolver {
     public float a;
     public float b;
     public float c;
-    public float delta;
+    private float delta;
     
-    public void computeDeterminant() {
+    private void computeDeterminant() {
         this.delta = (float)Math.pow(this.b, 2) - 4 * this.a * this.c;
     }
     
