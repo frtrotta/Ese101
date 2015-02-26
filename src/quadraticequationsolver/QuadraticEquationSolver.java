@@ -3,28 +3,30 @@ package quadraticequationsolver;
 import complexnumber.*;
 
 public class QuadraticEquationSolver {
-    public float a;
-    public float b;
-    public float c;
+    private float a;
+    private float b;
+    private float c;
     private float delta;
     
+    
+    
     private void computeDeterminant() {
-        this.delta = (float)Math.pow(this.b, 2) - 4 * this.a * this.c;
+        this.delta = (float)Math.pow(this.getB(), 2) - 4 * this.getA() * this.getC();
     }
     
     public ComplexNumber computeX1() {
         this.computeDeterminant();
         ComplexNumber r = new ComplexNumber();
         if(this.delta < 0) {
-            r.re = -this.b;
-            r.im = (float)Math.sqrt(-this.delta);
+            r.setRe(-this.getB());
+            r.setIm((float)Math.sqrt(-this.delta));
         }
         else {
-            r.re = -this.b + (float)Math.sqrt(this.delta);
-            r.im = 0;
+            r.setRe(-this.getB() + (float)Math.sqrt(this.delta));
+            r.setIm(0);
         }
-        r.re /= (2*this.a);
-        r.im /= (2*this.a);
+        r.setRe(r.getRe() / (2*this.getA()));
+        r.setIm(r.getIm() / (2*this.getA()));
         return r;
     }
     
@@ -32,15 +34,44 @@ public class QuadraticEquationSolver {
         this.computeDeterminant();
         ComplexNumber r = new ComplexNumber();
         if(this.delta < 0) {
-            r.re = -this.b;
-            r.im = -(float)Math.sqrt(-this.delta);
+            r.setRe(-this.getB());
+            r.setIm(-(float)Math.sqrt(-this.delta));
         }
         else {
-            r.re = -this.b - (float)Math.sqrt(this.delta);
-            r.im = 0;
+            r.setRe(-this.getB() - (float)Math.sqrt(this.delta));
+            r.setIm(0);
         }
-        r.re /= (2*this.a);
-        r.im /= (2*this.a);
+        r.setRe(r.getRe() / (2*this.getA()));
+        r.setIm(r.getIm() / (2*this.getA()));
         return r;
+    }
+
+    public float getA() {
+        return a;
+    }
+
+    public void setA(float value) {
+        if( value != 0) {
+            this.a = value;
+        }
+        else {
+            throw new IllegalArgumentException("The value of a must be different from 0.");
+        }
+    }
+
+    public float getB() {
+        return b;
+    }
+
+    public void setB(float b) {
+        this.b = b;
+    }
+
+    public float getC() {
+        return c;
+    }
+
+    public void setC(float c) {
+        this.c = c;
     }
 }

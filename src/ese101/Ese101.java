@@ -21,11 +21,14 @@ public class Ese101 {
             System.out.print("Inserisci il coefficiente a: ");
             linea = tastiera.readLine();
             try {
-                qes.a = Float.valueOf(linea).floatValue();
+                qes.setA(Float.valueOf(linea).floatValue());
                 valoreValido = true;
             }
             catch (NumberFormatException e) {
-                System.out.println("Numero non valido");
+                System.out.println("Numero non valido.");
+            }
+            catch (IllegalArgumentException e) {
+                System.out.println("Il valore impostat non e' ammesso.");
             }
         }
         
@@ -34,7 +37,7 @@ public class Ese101 {
             System.out.print("Inserisci il coefficiente b: ");
             linea = tastiera.readLine();
             try {
-                qes.b = Float.valueOf(linea).floatValue();
+                qes.setB(Float.valueOf(linea).floatValue());
                 valoreValido = true;
             }
             catch (NumberFormatException e) {
@@ -47,7 +50,7 @@ public class Ese101 {
             System.out.print("Inserisci il coefficiente c: ");
             linea = tastiera.readLine();
             try {
-                qes.c = Float.valueOf(linea).floatValue();
+                qes.setC(Float.valueOf(linea).floatValue());
                 valoreValido = true;
             }
             catch (NumberFormatException e) {
